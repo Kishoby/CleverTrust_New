@@ -1,14 +1,29 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import Logo from "../../../assets/images/Logo1.png";
-import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  FontAwesome,
+  Ionicons,
+} from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 
 const SignUp = () => {
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
+
   const [isChecked, setIsChecked] = useState(false);
   return (
-    <View
+    
+    <ScrollView
       style={{
         backgroundColor: Colors.PRIMARY,
         width: "100%",
@@ -129,7 +144,7 @@ const SignUp = () => {
             }}
           >
             <MaterialCommunityIcons
-              name="email-outline"
+              name="lock-outline"
               size={24}
               color={Colors.LIGHT}
               style={{
@@ -140,7 +155,7 @@ const SignUp = () => {
             />
             <TextInput
               placeholder="Password"
-              secureTextEntry
+              secureTextEntry={!isPasswordVisible}
               placeholderTextColor={Colors.LIGHT}
               style={{
                 fontFamily: "outfit-light",
@@ -151,6 +166,20 @@ const SignUp = () => {
                 paddingRight: 10,
               }}
             />
+            <TouchableOpacity
+              style={{
+                position: "absolute",
+                right: 20,
+                top: 12,
+              }}
+              onPress={() => setPasswordVisible(!isPasswordVisible)}
+            >
+              {isPasswordVisible ? (
+                <Ionicons name="eye-outline" size={23} color={"#747474"} />
+              ) : (
+                <Ionicons name="eye-off-outline" size={23} color={"#747474"} />
+              )}
+            </TouchableOpacity>
           </View>
 
           <View
@@ -173,7 +202,7 @@ const SignUp = () => {
             />
             <TextInput
               placeholder="Confirm Password"
-              secureTextEntry
+              secureTextEntry={!isPasswordVisible}
               placeholderTextColor={Colors.LIGHT}
               style={{
                 fontFamily: "outfit-light",
@@ -184,6 +213,20 @@ const SignUp = () => {
                 paddingRight: 10,
               }}
             />
+            <TouchableOpacity
+              style={{
+                position: "absolute",
+                right: 20,
+                top: 12,
+              }}
+              onPress={() => setPasswordVisible(!isPasswordVisible)}
+            >
+              {isPasswordVisible ? (
+                <Ionicons name="eye-outline" size={23} color={"#747474"} />
+              ) : (
+                <Ionicons name="eye-off-outline" size={23} color={"#747474"} />
+              )}
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -191,7 +234,7 @@ const SignUp = () => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            alignSelf:"flex-end",
+            alignSelf: "flex-end",
             marginTop: 20,
           }}
         >
@@ -232,7 +275,7 @@ const SignUp = () => {
             marginTop: 30,
             borderRadius: 10,
           }}
-          onPress={()=>router.push("/home")}
+          onPress={() => router.push("/home")}
         >
           <Text
             style={{
@@ -246,17 +289,27 @@ const SignUp = () => {
           </Text>
         </TouchableOpacity>
 
-        <View style={{
-          marginTop: 20,
-          alignItems: "center"
-        }}>
-          <Text style={{
-            color: Colors.LIGHT,
-            fontFamily: "outfit",
-          }}>Already have an account? <Text style={{ fontSize: 15, fontFamily: "outfit-bold" }}> <Link href="/(routes)/login">Login</Link></Text></Text>
+        <View
+          style={{
+            marginTop: 20,
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: Colors.LIGHT,
+              fontFamily: "outfit",
+            }}
+          >
+            Already have an account?{" "}
+            <Text style={{ fontSize: 15, fontFamily: "outfit-bold" }}>
+              {" "}
+              <Link href="/(routes)/login">Login</Link>
+            </Text>
+          </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
