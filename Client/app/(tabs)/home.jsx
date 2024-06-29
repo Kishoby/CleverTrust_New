@@ -1,13 +1,19 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
+import HeaderSection from '../../components/Home/HeaderSection'
+import { Colors } from "@/constants/Colors";
 
 export default function home() {
   return (
-    <View>
-      <Text style={{
-        fontSize:40,
-        fontFamily:'outfit-medium'
-      }}>home</Text>
-    </View>
+   
+      <View>
+      <View style={{
+        backgroundColor: Colors.PRIMARY,
+        height:100
+      }}>
+        <HeaderSection/>
+        </View>
+      </View>
+    
   )
 }
