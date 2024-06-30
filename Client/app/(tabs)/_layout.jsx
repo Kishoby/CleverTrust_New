@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { Colors } from "./../../constants/Colors.ts";
@@ -6,18 +6,32 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const TabLayout = () => {
+  
+ //Render back button. here im navigating to home.
+  const navigation = useNavigation();
+
+  const renderBackButton = () => (
+    <TouchableOpacity onPress={() => navigation.navigate('home')}>
+      <View style={{ marginLeft: 20 }}>
+        <Ionicons name="arrow-back" size={24} color="white" />
+      </View>
+    </TouchableOpacity>
+  );
+
+
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarActiveTintColor: Colors.PRIMARY,
       }}
     >
       <Tabs.Screen
         name="home"
         options={{
+          headerShown: false,
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontFamily: "outfit", fontSize: 11 }}>
               Home
@@ -32,6 +46,15 @@ const TabLayout = () => {
       <Tabs.Screen
         name="myPolicies"
         options={{
+          title: "My Policies",
+          headerTitleAlign: 'center',
+          headerLeft: renderBackButton,
+          headerTitleStyle: {
+            color: 'white', // Set title color
+          },
+          headerStyle: {
+            backgroundColor: Colors.PRIMARY, // Set header background color
+          },
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontFamily: "outfit", fontSize: 11 }}>
               MyPolicies
@@ -50,6 +73,15 @@ const TabLayout = () => {
       <Tabs.Screen
         name="myOffers"
         options={{
+          title: "My Offers",
+          headerTitleAlign: 'center',
+          headerLeft: renderBackButton,
+          headerTitleStyle: {
+            color: 'white', // Set title color
+          },
+          headerStyle: {
+            backgroundColor: Colors.PRIMARY, // Set header background color
+          },
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontFamily: "outfit", fontSize: 11 }}>
               MyOffers
@@ -64,6 +96,15 @@ const TabLayout = () => {
       <Tabs.Screen
         name="notifications"
         options={{
+          title: "Notifications",
+          headerTitleAlign: 'center',
+          headerLeft: renderBackButton,
+          headerTitleStyle: {
+            color: 'white', // Set title color
+          },
+          headerStyle: {
+            backgroundColor: Colors.PRIMARY, // Set header background color
+          },
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontFamily: "outfit", fontSize: 11 }}>
               Notifications
@@ -78,6 +119,15 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
+          title: "Profile",
+          headerTitleAlign: 'center',
+          headerLeft: renderBackButton,
+          headerTitleStyle: {
+            color: 'white', // Set title color
+          },
+          headerStyle: {
+            backgroundColor: Colors.PRIMARY, // Set header background color
+          },
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontFamily: "outfit", fontSize: 11 }}>
               Profile

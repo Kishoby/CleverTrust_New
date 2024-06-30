@@ -6,7 +6,7 @@ import { Colors } from "@/constants/Colors";
 const HeaderSection = () => {
   return (
     <View style={{
-        marginTop:40,
+        marginTop:50,
         marginHorizontal:20,
         display:'flex',
         flexDirection:'row',
