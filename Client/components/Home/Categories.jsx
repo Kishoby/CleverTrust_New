@@ -69,7 +69,7 @@ const Categories = () => {
                 marginHorizontal:20
             }}>
                 <Text style={{
-                    fontFamily:'outfit',
+                    fontFamily:'outfit-bold',
                     fontSize:16
                 }}>How can we help you?</Text>
             </View>
