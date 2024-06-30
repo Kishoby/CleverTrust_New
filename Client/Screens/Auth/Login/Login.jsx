@@ -253,7 +253,9 @@ const Login = () => {
             marginTop: 25,
           }}
         >
+          <Link href="/(routes)/forgot-password">
           <Text
+          
             style={{
               fontFamily: "outfit-bold",
               fontSize: 16,
@@ -263,6 +265,7 @@ const Login = () => {
           >
             Forgot your password?
           </Text>
+          </Link>
         </View>
 
         <TouchableOpacity
