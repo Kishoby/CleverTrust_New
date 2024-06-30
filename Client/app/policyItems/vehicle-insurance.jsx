@@ -139,7 +139,7 @@ const VehicleInsurance = () => {
                 <Text
                   style={{
                     fontFamily: "outfit-bold",
-                    color: Colors.LIGHT,
+                    color: '#DCDCDC',
                     fontSize: 18,
                     marginBottom: 5,
                   }}

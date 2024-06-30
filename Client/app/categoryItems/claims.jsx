@@ -1,10 +1,129 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { Colors } from "@/constants/Colors";
+import { useNavigation } from "@react-navigation/native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { useRouter } from "expo-router";
+import { FlatList } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Claims = () => {
+
+
+
+  const CategoryListItems = [
+    { 
+        id: '1', 
+        title: 'Request a Claim', 
+        icon: 'request-quote',
+        library: 'MaterialIcons',  
+        path:'/claims/request-claim' 
+    },
+    { 
+        id: '2', 
+        title: 'My Claims', 
+        icon: 'hand-holding-usd',
+        library: 'FontAwesome5',  
+        path:'/claims/my-claims'
+    },
+
+  ];
+
+  const navigation = useNavigation();
+  const router = useRouter();
+
   return (
     <View>
-      <Text>Claims</Text>
+      {/* Top-Header View Customized  */}
+      <View
+        style={{
+          backgroundColor: Colors.PRIMARY,
+          height: 100,
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <View
+          style={{
+            marginLeft: 20,
+            marginTop: 40,
+            display: "flex",
+            flexDirection: "row",
+            gap: 40,
+          }}
+        >
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={24} color="white" />
+          </TouchableOpacity>
+          <Text
+            style={{
+              color: "#fff",
+              fontFamily: "outfit-bold",
+              fontSize: 20,
+            }}
+          >
+            Claims & Recovering
+          </Text>
+        </View>
+      </View>
+      {/* Top-Header View Customized  */}
+
+      <View style={{
+        marginTop:0
+      }}>
+      <FlatList
+                data={CategoryListItems}                
+                keyExtractor={item => item.id}
+                numColumns={1}
+                vertical={true}
+                contentContainerStyle={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop:20,
+                    marginBottom:150
+                }}
+
+                renderItem={ ({ item,index }) => (
+                <TouchableOpacity style={{
+                     backgroundColor:Colors.PRIMARY,
+                     borderRadius:5,
+                     width:150,
+                     height:150,
+                     margin:20
+                }} 
+                onPress={()=>router.push(item.path)}>
+                <View style={{
+                    padding:10,
+                    alignItems:"center",
+                    justifyContent: 'center'
+                }}>
+
+                
+                {item.library === 'MaterialCommunityIcons' && (
+                  <MaterialCommunityIcons name={item.icon} size={90} color="#217482" />
+                )}
+                {item.library === 'MaterialIcons' && (
+                  <MaterialIcons name={item.icon} size={90} color="#519BC0" />
+                )}
+                {item.library === 'FontAwesome5' && (
+                 <FontAwesome5 name={item.icon} size={90} color="#8379A7" />
+                )}
+
+
+                <Text style={{
+                    fontFamily:'outfit-bold',
+                    color:Colors.LIGHT,
+                    fontSize:16,
+                    marginTop:5
+                }}>{item.title}</Text>
+                </View>
+                </TouchableOpacity>
+  )}
+      />
+      </View>
     </View>
   )
 }
