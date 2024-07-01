@@ -20,7 +20,7 @@ const TravelInsurance = () => {
       coverageAmount: "Up to $50,000",
       policyFeatures: "Medical Expenses, Trip Cancellation",
       imageUrl:
-        "https://www.zurich.com/-/media/project/zurich/dotcom/industry-knowledge/global-risks/images/stage-business-travel-insurance.jpg?h=1250&iar=0&w=2500&rev=4d8867114ce44afabf654e0a1ad1f1a5&hash=EB1443D7C2D7F79DC73DF23998193476",
+        "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
       id: "2",
@@ -30,7 +30,7 @@ const TravelInsurance = () => {
       coverageAmount: "Up to $100,000",
       policyFeatures: "Medical Expenses, Trip Cancellation, Luggage Loss, Travel Delay",
       imageUrl:
-        "https://images.pexels.com/photos/2007401/pexels-photo-2007401.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
       id: "3",

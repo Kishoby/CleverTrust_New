@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image,Linking } from "react-native";
 import React from "react";
 import { Colors } from "@/constants/Colors";
 import { useNavigation } from "@react-navigation/native";
@@ -16,35 +16,35 @@ const Services = () => {
       title: "Emergency Contact",
       icon: "contact-emergency",
       library: "MaterialIcons",
-      path: "/categoryItems/policy-details",
+      action: () => Linking.openURL("tel:077 1411559"),
     },
     {
       id: "2",
       title: "Book an Appointment",
       icon: "calendar-month",
       library: "MaterialIcons",
-      path: "/categoryItems/policy-details",
+      path: "/services/book-appointment",
     },
     {
       id: "3",
       title: "Customer Support",
       icon: "support-agent",
       library: "MaterialIcons",
-      path: "/categoryItems/claims",
+      path: "/services/customer-support",
     },
     {
       id: "4",
       title: "Text Message",
       icon: "chatbox-ellipses-outline",
       library: "Ionicons",
-      path: "/categoryItems/policy-details",
+      action: () => Linking.openURL("sms:0767799845?body=Hello, I need assistance"),
     },
     {
       id: "5",
       title: "Send a Mail",
       icon: "mail",
       library: "Ionicons",
-      path: "/categoryItems/claims",
+      action: () => Linking.openURL("mailto:support@clevertrust.com?subject=Assistance Needed&body=Hello, I need assistance with..."),
     },
 
     {
@@ -52,7 +52,7 @@ const Services = () => {
       title: "Help Center",
       icon: "contact-support",
       library: "MaterialIcons",
-      path: "/categoryItems/claims",
+      action: () => Linking.openURL("https://support.google.com/")
     },
   ];
 
@@ -109,7 +109,7 @@ const Services = () => {
         >
           <Image
             source={{
-              uri: "https://images.pexels.com/photos/8439648/pexels-photo-8439648.jpeg?auto=compress&cs=tinysrgb&w=600",
+              uri: "https://justatic.com/v/20231012123507/marketing/files/new/production/images/portal/insurance.jpg",
             }}
             style={{
               width: "94%",
@@ -155,7 +155,7 @@ const Services = () => {
                   height: 100,
                   marginHorizontal: 10,
                   marginBottom: 40,
-                  backgroundColor: "#FFFFFF",
+                  backgroundColor:Colors.PRIMARY,
                   borderRadius: 10,
                   justifyContent: "center",
                   alignItems: "center",
@@ -165,7 +165,9 @@ const Services = () => {
                   shadowRadius: 3.84,
                   elevation: 5,
                 }}
-                onPress={() => router.push(item.path)}
+                onPress={() =>
+                  item.action ? item.action() : router.push(item.path)
+                }
               >
                 <View
                   style={{
@@ -175,7 +177,7 @@ const Services = () => {
                   }}
                 >
                   {item.library === "MaterialIcons" && (
-                    <MaterialIcons name={item.icon} size={50} color="#00416C" />
+                    <MaterialIcons name={item.icon} size={50} color="#FFF" />
                   )}
                   {item.library === "MaterialCommunityIcons" && (
                     <MaterialCommunityIcons
@@ -191,7 +193,7 @@ const Services = () => {
                     <FontAwesome name={item.icon} size={60} color="#217482" />
                   )}
                   {item.library === "Ionicons" && (
-                    <Ionicons name={item.icon} size={50} color="#00416C" />
+                    <Ionicons name={item.icon} size={50} color="#FFF" />
                   )}
                   {item.library === "FontAwesome5" && (
                     <FontAwesome5 name={item.icon} size={60} color="#217482" />
@@ -200,7 +202,7 @@ const Services = () => {
                   <Text
                     style={{
                       fontFamily: "outfit-bold",
-                      color: "#777376",
+                      color: Colors.LIGHT,
                       fontSize: 11,
                       marginTop: 5,
                     }}
@@ -218,7 +220,7 @@ const Services = () => {
             marginTop: 10,
             marginHorizontal: 20,
             fontFamily: "outfit",
-            color: "#858788",
+            color: Colors.GREY,
             textAlign: "center",
           }}
         >
@@ -230,12 +232,12 @@ const Services = () => {
           style={{
             marginTop: 30,
             marginHorizontal: 20,
-            fontFamily: "outfit",
+            fontFamily: "outfit-bold",
             color: Colors.PRIMARY,
             textAlign: "center",
           }}
         >
-          © 2024 Your Company Name. All rights reserved.
+          © 2024 Clever Trust Ltd. All rights reserved.
         </Text>
       </View>
     </View>

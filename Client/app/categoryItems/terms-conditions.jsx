@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
       </View>
       
       <ScrollView style={styles.content}>
-        <Text style={styles.paragraph}>
+        <Text style={styles.paragraph1}>
           Welcome to our insurance app. By using this application, you agree to the following terms and conditions:
         </Text>
         <Text style={styles.paragraph}>
@@ -35,7 +35,7 @@ const TermsAndConditions = () => {
         </Text>
         <Text style={styles.paragraph}>
           3. We reserve the right to modify these terms at any time. Continued use of the app after changes constitutes acceptance of the new terms.
-        </Text>
+          </Text>
         <Text style={styles.paragraph}>
           4. Your personal data will be handled in accordance with our Privacy Policy.
         </Text>
@@ -53,8 +53,8 @@ const TermsAndConditions = () => {
         </Text>
        
        
-        <Text style={styles.text} >
-          Learn more 
+        <Text style={styles.text}>
+         Learn more... 
         </Text>
        
       </ScrollView>
@@ -92,12 +92,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 15,
     lineHeight: 24,
-    color: '#444',
-    fontFamily: 'outfit', 
+    color: "#595E5F",
+    fontFamily: 'outfit',
+    textAlign: 'justify', 
     
   },
-  text: {
-    fontFamily: "outfit-bold"
+  paragraph1: {
+    fontSize: 16,
+    marginBottom: 15,
+    lineHeight: 24,
+    color: Colors.GREY,
+    fontFamily: 'outfit-bold',
+    textAlign: 'justify', 
+    
+  },
+  text:{
+    fontFamily:'outfit-bold',
+    color:Colors.PRIMARY,
+    marginBottom:50,
+    alignSelf:"flex-end"
   },
 })
 
