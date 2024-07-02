@@ -103,22 +103,22 @@ const Categories = () => {
                 }}>
 
                 {item.library === 'MaterialIcons' && (
-                  <MaterialIcons name={item.icon} size={80} color="#217482" />
+                  <MaterialIcons name={item.icon} size={80} color="#FFF" />
                 )}
                 {item.library === 'MaterialCommunityIcons' && (
-                  <MaterialCommunityIcons name={item.icon} size={90} color="#217482" />
+                  <MaterialCommunityIcons name={item.icon} size={90} color="#FFF" />
                 )}
                 {item.library === 'Entypo' && (
-                  <Entypo name={item.icon} size={80} color="#217482" />
+                  <Entypo name={item.icon} size={80} color="#FFF" />
                 )}
                 {item.library === 'FontAwesome' && (
                   <FontAwesome name={item.icon} size={90} color="#217482" />
                 )}
                 {item.library === 'Ionicons' && (
-                  <Ionicons name={item.icon} size={90} color="#217482" />
+                  <Ionicons name={item.icon} size={90} color="#fff" />
                 )}
                 {item.library === 'FontAwesome5' && (
-                 <FontAwesome5 name={item.icon} size={90} color="#217482" />
+                 <FontAwesome5 name={item.icon} size={90} color="#fff" />
                 )}
 
 

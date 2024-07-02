@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { Colors } from "@/constants/Colors";
 import { useNavigation } from "@react-navigation/native";
@@ -70,14 +70,33 @@ const Claims = () => {
         </View>
       </View>
       {/* Top-Header View Customized  */}
-
+      <View
+          style={{
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={{
+              uri: "https://cdn-cinaa.nitrocdn.com/aJfFdOSJwpiELYrGIjzrZVCzfxpjpPWe/assets/images/optimized/rev-9d54ffe/kaseinsurance.com/wp-content/uploads/2023/09/img-1.jpg",
+            }}
+            style={{
+              width: "94%",
+              height: 160, // Adjust height as per your requirement
+              borderRadius: 10,
+              marginBottom: 10,
+              padding: 10,
+              marginTop: 20,
+            }}
+            resizeMode="cover"
+          />
+        </View>
       <View style={{
         marginTop:0
       }}>
       <FlatList
                 data={CategoryListItems}                
                 keyExtractor={item => item.id}
-                numColumns={1}
+                numColumns={2}
                 vertical={true}
                 contentContainerStyle={{
                     justifyContent: 'center',
@@ -109,13 +128,13 @@ const Claims = () => {
                   <MaterialIcons name={item.icon} size={90} color="#519BC0" />
                 )}
                 {item.library === 'FontAwesome5' && (
-                 <FontAwesome5 name={item.icon} size={90} color="#8379A7" />
+                 <FontAwesome5 name={item.icon} size={90} color="#519BC0" />
                 )}
 
 
                 <Text style={{
                     fontFamily:'outfit-bold',
-                    color:Colors.LIGHT,
+                    color:"#fff",
                     fontSize:16,
                     marginTop:5
                 }}>{item.title}</Text>

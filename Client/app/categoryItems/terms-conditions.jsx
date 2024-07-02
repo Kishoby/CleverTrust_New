@@ -56,7 +56,15 @@ const TermsAndConditions = () => {
         <Text style={styles.text}>
          Learn more... 
         </Text>
-       
+        
+        <Text style={{
+          marginBottom:45,
+          marginHorizontal: 20,
+            fontFamily: "outfit-bold",
+            color: Colors.GREY,
+            textAlign: "center",
+        }}>© 2024 Clever Trust Ltd. All rights reserved.</Text>
+
       </ScrollView>
     </View>
   )
@@ -89,8 +97,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   paragraph: {
-    fontSize: 16,
-    marginBottom: 15,
+    fontSize: 13,
+    marginBottom: 12,
     lineHeight: 24,
     color: "#595E5F",
     fontFamily: 'outfit',
@@ -108,8 +116,8 @@ const styles = StyleSheet.create({
   },
   text:{
     fontFamily:'outfit-bold',
-    color:Colors.PRIMARY,
-    marginBottom:50,
+    color: "#595E5F",
+    marginBottom:20,
     alignSelf:"flex-end"
   },
 })
