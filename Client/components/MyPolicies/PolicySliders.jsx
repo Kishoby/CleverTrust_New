@@ -40,17 +40,23 @@ const policies = [
 const renderItem = ({ item }) => {
   return (
     <ScrollView contentContainerStyle={styles.slide}>
-    <View style={{
-        display: 'flex',
-        width: '100%',
-        backgroundColor: '#BDBEC3'
-    }}>
+   
       <View style={styles.policyCard}>
         <Text style={styles.policyTitle}>Clever Trust Insurance Pvt (Ltd)</Text>
         <Text style={styles.policyHolder}>{item.policyNo}</Text>
+        <View style={{
+          backgroundColor:Colors.PRIMARY,
+          padding:10,
+          paddingHorizontal:25,
+          borderWidth:1.5,
+         
+          borderColor:"#fff",
+          alignItems: 'center'
+        }}>
         <Text style={styles.Name}>Name : {item.name}</Text>
         <Text style={styles.policyDetail}>Policy No: {item.policyNo}</Text>
         <Text style={styles.policyDetail}>Insurance Premium: {item.insurancePremium}</Text>
+        </View>
       </View>
       <View style={styles.policyInfo}>
         <Text style={styles.policyInfoText}>Policy Status</Text>
@@ -68,7 +74,7 @@ const renderItem = ({ item }) => {
         <Text style={styles.policyInfoText}>Excess Balance</Text>
         <Text style={styles.policyInfoValue}>{item.excessBalance}</Text>
       </View>
-      </View>
+     
     </ScrollView>
   );
 };
@@ -90,18 +96,20 @@ const styles = StyleSheet.create({
   slide: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#BDBEC3',
+    padding: 10,
+    backgroundColor:Colors.LIGHT,
     height: '100%',
     width: '100%',
   },
   policyCard: {
     width: '100%',
     padding: 20,
-    backgroundColor: Colors.PRIMARY,
-    borderRadius: 10,
+    paddingBottom:50,
+    backgroundColor:Colors.PRIMARY,
+    borderTopRightRadius:10,
+    borderTopLeftRadius:10,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 0,
     marginTop:60,
     
   },
@@ -138,19 +146,20 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     paddingVertical:10,
-    backgroundColor: '#fff',
+    backgroundColor: '#535769',
     borderRadius: 10,
     marginBottom: 70,
+    marginTop:-20
   },
   policyInfoText: {
     fontSize: 14,
-    color: '#333333',
+    color: '#fff',
     fontWeight: 'bold',
     marginTop: 10,
   },
   policyInfoValue: {
     fontSize: 16,
-    color: '#68292B',
+    color: Colors.LIGHT,
     
   },
   dotStyle: {
