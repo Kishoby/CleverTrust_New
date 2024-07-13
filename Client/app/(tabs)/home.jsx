@@ -10,6 +10,7 @@ export default function home() {
     <View
       style={{
         flex: 1,
+        
       }}
     >
       <View

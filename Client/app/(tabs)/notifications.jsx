@@ -62,7 +62,7 @@ const NotificationPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:Colors.PRIMARY,
+    backgroundColor:"#ACACB0",
   },
   header: {
     flexDirection: 'row',

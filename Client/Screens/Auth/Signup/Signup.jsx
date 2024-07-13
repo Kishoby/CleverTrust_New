@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  KeyboardAvoidingView,
+  ToastAndroid,
 } from "react-native";
 import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
@@ -16,13 +16,51 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../../configs/FirebaseConfig.js';
 
 const SignUp = () => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-
   const [isChecked, setIsChecked] = useState(false);
-  return (
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [name, setName] = useState();
+
+  const onCreateAccount = () => {
+    if (!email || !password || !confirmPassword || !name) {
+      ToastAndroid.show('Please enter all details', ToastAndroid.LONG);
+      return;
+    }
     
+    if (password !== confirmPassword) {
+      ToastAndroid.show('Passwords do not match', ToastAndroid.LONG);
+      return;
+    }
+    
+    if (!isChecked) {
+      ToastAndroid.show('Please accept the terms and conditions', ToastAndroid.LONG);
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        console.log(user);
+        ToastAndroid.show('Registered Successfully !', ToastAndroid.LONG);
+        router.replace("/home");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
+  }
+
+  return (
     <ScrollView
       style={{
         backgroundColor: Colors.PRIMARY,
@@ -56,7 +94,7 @@ const SignUp = () => {
               fontSize: 16,
             }}
           >
-            Create a new account? Just few steps!
+            Create a new account? Just a few steps!
           </Text>
         </View>
 
@@ -90,6 +128,7 @@ const SignUp = () => {
             <TextInput
               placeholder="Name"
               placeholderTextColor={Colors.LIGHT}
+              onChangeText={(value) => setName(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -123,6 +162,7 @@ const SignUp = () => {
             <TextInput
               placeholder="Email/Username"
               placeholderTextColor={Colors.LIGHT}
+              onChangeText={(value) => setEmail(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -157,6 +197,7 @@ const SignUp = () => {
               placeholder="Password"
               secureTextEntry={!isPasswordVisible}
               placeholderTextColor={Colors.LIGHT}
+              onChangeText={(value) => setPassword(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -204,6 +245,7 @@ const SignUp = () => {
               placeholder="Confirm Password"
               secureTextEntry={!isPasswordVisible}
               placeholderTextColor={Colors.LIGHT}
+              onChangeText={(value) => setConfirmPassword(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -275,7 +317,7 @@ const SignUp = () => {
             marginTop: 30,
             borderRadius: 10,
           }}
-          onPress={() => router.push("/home")}
+          onPress={onCreateAccount}
         >
           <Text
             style={{

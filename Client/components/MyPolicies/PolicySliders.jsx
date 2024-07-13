@@ -79,6 +79,7 @@ const renderItem = ({ item }) => {
   );
 };
 
+
 const PolicySlider = () => {
   return (
     <AppIntroSlider
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor:Colors.LIGHT,
+    backgroundColor:"#ACACB0",
     height: '100%',
     width: '100%',
   },
@@ -146,20 +147,20 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     paddingVertical:10,
-    backgroundColor: '#535769',
+    backgroundColor: '#FEFEFE',
     borderRadius: 10,
     marginBottom: 70,
     marginTop:-20
   },
   policyInfoText: {
     fontSize: 14,
-    color: '#fff',
+    color: '#000',
     fontWeight: 'bold',
     marginTop: 10,
   },
   policyInfoValue: {
     fontSize: 16,
-    color: Colors.LIGHT,
+    color: "#690C60",
     
   },
   dotStyle: {

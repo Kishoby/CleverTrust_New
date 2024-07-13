@@ -58,7 +58,7 @@ const MyOffers = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#45454a',
+    backgroundColor: '#fff',
   },
 
   headerContent: {
@@ -102,11 +102,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    color:"#79136D",
     fontFamily:"outfit-bold"
   },
   offerDescription: {
     fontSize: 14,
-    color: '#0d102b',
+    color: Colors.PRIMARY,
     marginBottom: 8,
     fontFamily: "outfit-bold"
   },

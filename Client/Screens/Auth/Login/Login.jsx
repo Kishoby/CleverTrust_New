@@ -1,9 +1,11 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid } from "react-native";
 import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import Logo from "../../../assets/images/Logo1.png";
 import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/configs/FirebaseConfig";
 
 const Login = () => {
   // Password visibility
@@ -21,6 +23,7 @@ const Login = () => {
   });
 
   const [buttonSpinner, setButtonSpinner] = useState(false);
+
   const router = useRouter();
 
 
@@ -85,6 +88,43 @@ const Login = () => {
       console.log("Logging in...");
     }
   };
+ 
+
+
+  // Login -------------------------------------------------------///
+  
+
+  const [email,setEmail] = useState();
+  const [password,setPassword] = useState();
+  
+
+  const OnLogin=()=>{
+
+    if(!email&&!password){
+      ToastAndroid.show("Please Enter Email & Password", ToastAndroid.LONG);
+    }
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    router.push("/home");
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage,error.code)
+    if(errorCode=='auth/invalid-credential'){
+      ToastAndroid.show("Invalid Credentials!",ToastAndroid.LONG)
+    }
+    if(errorCode=='auth/invalid-email'){
+      ToastAndroid.show("Invalid Email Address!",ToastAndroid.LONG)
+    }
+  });
+}
+
+
 
   return (
     <View
@@ -154,6 +194,7 @@ const Login = () => {
             <TextInput
               placeholder="Email/Username"
               placeholderTextColor={Colors.LIGHT}
+              onChangeText={(value)=>setEmail(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -162,10 +203,7 @@ const Login = () => {
                 paddingVertical: 10,
                 paddingRight: 10,
               }}
-              onChangeText={(value) => {
-                setUserInfo({ ...userInfo, email: value });
-                setError((prevError) => ({ ...prevError, email: "" }));
-              }}
+              
             />
           </View>
           {error.email && (
@@ -206,7 +244,7 @@ const Login = () => {
               placeholder="Password"
               secureTextEntry={!isPasswordVisible}
               placeholderTextColor={Colors.LIGHT}
-              onChangeText={handlePasswordValidation}
+              onChangeText={(value)=>setPassword(value)}
               style={{
                 fontFamily: "outfit-light",
                 fontSize: 18,
@@ -275,7 +313,7 @@ const Login = () => {
             marginTop: 30,
             borderRadius: 10,
           }}
-          onPress={handleLogin}
+          onPress={OnLogin}
         >
           <Text
             style={{
