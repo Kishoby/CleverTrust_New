@@ -109,6 +109,8 @@ const styles = StyleSheet.create({
     backgroundColor:Colors.PRIMARY,
     borderTopRightRadius:10,
     borderTopLeftRadius:10,
+    borderBottomRightRadius:10,
+    borderBottomLeftRadius:10,
     alignItems: 'center',
     marginBottom: 0,
     marginTop:60,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
   },
   Name:{
     fontSize: 16,
-    fontFamily:"Outfit-bold",
+    fontFamily:"outfit-bold",
     color: Colors.LIGHT,
     fontWeight: 'bold',
 

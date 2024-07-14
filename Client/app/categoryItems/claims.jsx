@@ -77,7 +77,7 @@ const Claims = () => {
         >
           <Image
             source={{
-              uri: "https://cdn-cinaa.nitrocdn.com/aJfFdOSJwpiELYrGIjzrZVCzfxpjpPWe/assets/images/optimized/rev-9d54ffe/kaseinsurance.com/wp-content/uploads/2023/09/img-1.jpg",
+              uri: "https://www.dahsing.com/img/credit_card/cc_top_ins.jpg",
             }}
             style={{
               width: "94%",

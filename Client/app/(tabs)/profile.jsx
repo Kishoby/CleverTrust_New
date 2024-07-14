@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -6,21 +6,21 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
-  ScrollView
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+  ScrollView,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const ProfilePage = () => {
   const navigation = useNavigation();
 
-  
   const user = {
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+94 761481559",
     policyNumber: "POL-1234567890",
-    profileImage: "https://www.pngitem.com/pimgs/m/404-4042710_circle-profile-picture-png-transparent-png.png" 
+    profileImage:
+      "https://www.pngitem.com/pimgs/m/404-4042710_circle-profile-picture-png-transparent-png.png",
   };
 
   const QuickActionButton = ({ icon, label, onPress }) => (
@@ -34,13 +34,12 @@ const ProfilePage = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         
-          <TouchableOpacity style={styles.editButton}>
-            <Ionicons name="create-outline" size={24} color="#007AFF" />
-          </TouchableOpacity>
-       
 
         <View style={styles.profileSection}>
-          <Image source={{ uri: user.profileImage }} style={styles.profileImage} />
+          <Image
+            source={{ uri: user.profileImage }}
+            style={styles.profileImage}
+          />
           <Text style={styles.userName}>{user.name}</Text>
           <Text style={styles.userEmail}>{user.email}</Text>
         </View>
@@ -52,34 +51,70 @@ const ProfilePage = () => {
           </View>
           <View style={styles.infoRow}>
             <Ionicons name="document-text-outline" size={20} color="#007AFF" />
-            <Text style={styles.infoText}>Policy Number: {user.policyNumber}</Text>
+            <Text style={styles.infoText}>
+              Policy Number: {user.policyNumber}
+            </Text>
           </View>
         </View>
 
         <View style={styles.quickActionsSection}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActionsRow}>
-            <QuickActionButton icon="document-text-outline" label="My Policies" onPress={() => {/* Navigate to Policies */}} />
-            <QuickActionButton icon="clipboard-outline" label="File a Claim" onPress={() => {/* Navigate to Claims */}} />
-            <QuickActionButton icon="card-outline" label="Payments" onPress={() => {/* Navigate to Payments */}} />
+            <QuickActionButton
+              icon="document-text-outline"
+              label="My Policies"
+              onPress={() => {
+                /* Navigate to Policies */
+              }}
+            />
+            <QuickActionButton
+              icon="clipboard-outline"
+              label="File a Claim"
+              onPress={() => {
+                /* Navigate to Claims */
+              }}
+            />
+            <QuickActionButton
+              icon="card-outline"
+              label="Payments"
+              onPress={() => {
+                /* Navigate to Payments */
+              }}
+            />
           </View>
         </View>
 
         <View style={styles.additionalOptionsSection}>
           <TouchableOpacity style={styles.optionRow}>
-            <Ionicons name="shield-checkmark-outline" size={24} color="#007AFF" />
+            <Ionicons
+              name="shield-checkmark-outline"
+              size={24}
+              color="#007AFF"
+            />
             <Text style={styles.optionText}>Privacy & Security</Text>
-            <Ionicons name="chevron-forward-outline" size={24} color="#C7C7CC" />
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color="#C7C7CC"
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.optionRow}>
             <Ionicons name="notifications-outline" size={24} color="#007AFF" />
             <Text style={styles.optionText}>Notifications</Text>
-            <Ionicons name="chevron-forward-outline" size={24} color="#C7C7CC" />
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color="#C7C7CC"
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.optionRow}>
             <Ionicons name="help-circle-outline" size={24} color="#007AFF" />
             <Text style={styles.optionText}>Help & Support</Text>
-            <Ionicons name="chevron-forward-outline" size={24} color="#C7C7CC" />
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color="#C7C7CC"
+            />
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -90,32 +125,32 @@ const ProfilePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F7',
+    backgroundColor: "#F2F2F7",
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#C6C6C8',
-    backgroundColor: 'white',
+    borderBottomColor: "#C6C6C8",
+    backgroundColor: "white",
   },
   backButton: {
     padding: 8,
   },
   headerTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
   },
   editButton: {
     padding: 8,
   },
   profileSection: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   profileImage: {
     width: 100,
@@ -125,21 +160,21 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
   },
   userEmail: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
   },
   infoSection: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 20,
     marginTop: 20,
   },
   infoRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 10,
   },
   infoText: {
@@ -148,41 +183,41 @@ const styles = StyleSheet.create({
   },
   quickActionsSection: {
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginTop: 20,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 15,
   },
   quickActionsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   quickActionButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '30%',
+    alignItems: "center",
+    justifyContent: "center",
+    width: "30%",
     aspectRatio: 1,
-    backgroundColor: '#F2F2F7',
+    backgroundColor: "#F2F2F7",
     borderRadius: 12,
   },
   quickActionLabel: {
     marginTop: 5,
     fontSize: 12,
-    textAlign: 'center',
+    textAlign: "center",
   },
   additionalOptionsSection: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginTop: 20,
   },
   optionRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E5EA',
+    borderBottomColor: "#E5E5EA",
   },
   optionText: {
     flex: 1,

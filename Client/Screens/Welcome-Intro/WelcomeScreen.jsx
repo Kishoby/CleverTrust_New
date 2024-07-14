@@ -10,13 +10,13 @@ const slides = [
       id: 1,
       title: 'Your security is our priority',
       description: '“In today’s digital world, we understand that your personal and financial information must be protected with the highest level of security. At Clever Trust Insurance, we use advanced encryption and stringent privacy measures to ensure that your data remains safe and confidential. You can trust us to keep your information secure, giving you peace of mind as you manage your insurance needs."',
-      image: require('../../assets/images/onboarding_1.png')
+      image: require('../../assets/images/onboarding_6.png')
     },
     {
       id: 2,
       title: 'Plan today for a worry-free tomorrow',
       description: '“Ensure your peace of mind by preparing for the future now. You can easily access and customize insurance plans that fit your lifestyle and protect what matters most. Start today and take the first step towards a secure and worry-free tomorrow. "',
-      image: require('../../assets/images/onboarding_2.png')
+      image: require('../../assets/images/onboarding_7.png')
     },
     {
       id: 3,

@@ -35,7 +35,7 @@ const NotificationPage = () => {
   const renderNotificationItem = ({ item }) => (
     <TouchableOpacity style={styles.notificationItem}>
       <View style={styles.iconContainer}>
-        <Ionicons name={getIconName(item.type)} size={24} color="#007AFF" />
+        <Ionicons name={getIconName(item.type)} size={24} color="#910989" />
       </View>
       <View style={styles.notificationContent}>
         <Text style={styles.notificationTitle}>{item.title}</Text>
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor:"#ACACB0",
+  
   },
   header: {
     flexDirection: 'row',

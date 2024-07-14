@@ -36,7 +36,7 @@ const HeaderSection = () => {
       <View>
         <Text style={{
             fontFamily: "outfit",
-            color: Colors.LIGHT
+            color:"#FDB157"
         }}>Welcome Back,</Text>
         <Text style={{
             fontFamily: 'outfit-bold',
