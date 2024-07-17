@@ -6,23 +6,45 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Colors } from "@/constants/Colors";
 import { Link, router } from "expo-router";
+import { Feather } from '@expo/vector-icons';
 
 const ProfilePage = () => {
   const navigation = useNavigation();
+  
+
+  const onLogout=()=>{
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to log out?",
+      [
+        {
+          text: "No",
+          style: "cancel"
+        },
+        {
+          text: "Logout",
+          onPress: () => router.push('/login'),
+          style: "destructive"
+        }
+      ],
+      { cancelable: false }
+    );
+  }
 
   
   const user = {
-    name: "Gobihanath.Balasubramaniam",
-    email: "Gobi26@gmail.com",
+    name: "Gobihanath B",
+    email: "gobikish2615@gmail.com",
     contact: "+94 761281559",
     insurance_ID: "GK 152610",
-    profileimage: "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNy00MDMucG5n.png" 
+    profileimage: "https://lh3.googleusercontent.com/a/ACg8ocIvqHMU518dBDTOo7yNbXPSso6UgnoQANv3_ZpXF5IDjCKTZX_v=s360-c-no" 
   };
 
 
@@ -30,7 +52,7 @@ const ProfilePage = () => {
   return (
     <SafeAreaView style={ {
       flex: 1,
-      backgroundColor:"#ACACB0",
+      backgroundColor:"#DADDE0",
     }}>
 
       <ScrollView>
@@ -42,17 +64,23 @@ const ProfilePage = () => {
        
 
        
-          <View style={styles.options}>
+          
+        </View>
+
+            <View style={{
+              backgroundColor:"#FFFFFF",
+              marginTop:20
+            }}>
+            <View style={styles.options}>
+            <Ionicons name="document-text-outline" size={20} color="#0a295c" />
+            <Text style={styles.detail}>Insurance ID: {user.insurance_ID}</Text>
+            </View>
+            <View style={styles.options}>
             <Ionicons name="call-outline" size={20} color="#0a295c" />
             <Text style={styles.detail}>{user.contact}</Text>
             </View>
-            <View style={styles.insurance}>
-            <Ionicons name="document-text-outline" size={20} color="#0a295c" />
-            <Text style={styles.detail}>Insurance_ID: {user.insurance_ID}</Text>
+            
             </View>
-        </View>
-
-       
 
         <View style={styles.Option_Section}>
           
@@ -66,29 +94,14 @@ const ProfilePage = () => {
             <Text style={styles.optionText}>Help & Support</Text>
             <Ionicons name="chevron-forward-outline" size={24} color="#C7C7CC" />
           </TouchableOpacity>
+          <TouchableOpacity style={styles.optionRow}  onPress={onLogout}>
+            <Feather name="log-out" size={24} color="#0a295c" />
+            <Text style={styles.optionText}>Log Out</Text>
+            <Ionicons name="chevron-forward-outline" size={24} color="#C7C7CC" />
+          </TouchableOpacity>
         </View>
         <View>
-        <TouchableOpacity
-            style={{
-              backgroundColor: Colors.PRIMARY,
-              padding: 10,
-              marginTop: 40,
-              borderRadius: 30,
-              marginBottom: 25,
-            }}
-            onPress={() => router.push("/(routes)/login")}
-          >
-            <Text
-              style={{
-                fontFamily: "outfit-bold",
-                fontSize: 20,
-                textAlign: "center",
-                color: "white",
-              }}
-            >
-              Log Out 
-            </Text>
-          </TouchableOpacity>
+        
           </View>
       </ScrollView>
     </SafeAreaView>
@@ -102,28 +115,37 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
     borderBottomColor:'black',
+    marginTop:0,
+    paddingTop:40
   },
   profileimage: {
     width: 100,
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
+    borderColor:Colors.PRIMARY,
+    borderWidth:1
   },
   userName: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontStyle:"outfit",
+    fontWeight:"bold",
+    color:Colors.PRIMARY,
     marginBottom: 5,
   },
   userEmail: {
     fontSize: 18,
     color: '#666',
+    marginBottom:20
   },
  
   options: {
     backgroundColor: 'white',
-    padding: 20,
-    marginTop: 20,
+    padding: 16,
+    marginTop: 0,
     flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5EA',
   },
   insurance: {
     flexDirection: 'row',
@@ -132,8 +154,8 @@ const styles = StyleSheet.create({
   },
   detail: {
     marginLeft: 10,
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    
   },
   Option_Section: {
     backgroundColor: 'white',

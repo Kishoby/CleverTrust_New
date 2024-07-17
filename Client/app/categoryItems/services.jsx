@@ -37,7 +37,7 @@ const Services = () => {
       title: "Text Message",
       icon: "chatbox-ellipses-outline",
       library: "Ionicons",
-      action: () => Linking.openURL("sms:0767799845?body=Hello, I need assistance"),
+      action: () => Linking.openURL("sms:0771411559?body=Hello, I need assistance"),
     },
     {
       id: "5",

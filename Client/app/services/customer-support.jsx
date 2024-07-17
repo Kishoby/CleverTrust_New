@@ -9,6 +9,7 @@ import {
   Button, 
   Linking,
   SafeAreaView,
+  ToastAndroid,
   FlatList
 } from 'react-native';
 import { Colors } from "@/constants/Colors";
@@ -33,6 +34,7 @@ const CustomerSupport = () => {
     console.log('Submitting issue:', { issueName, issueDescription });
     setIssueName('');
     setIssueDescription('');
+    ToastAndroid.show("Report Submitted", ToastAndroid.LONG);
   };
 
   const renderFaqItem = ({ item }) => (

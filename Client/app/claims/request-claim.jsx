@@ -5,20 +5,31 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  ToastAndroid,
+  Platform,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { Colors } from "@/constants/Colors"; // Assuming you have defined your colors somewhere
 import { Picker } from "@react-native-picker/picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const RequestClaim = () => {
   const navigation = useNavigation();
   const [claimType, setClaimType] = useState(""); // State to hold selected claim type
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const handleSubmit = () => {
     // Logic to handle claim submission, e.g., API calls, validation
-    console.log("Submitting claim...");
+    ToastAndroid.show("Claim Request Submitted", ToastAndroid.LONG);
     // You can navigate to another screen or show a success message
+  };
+
+  const onChangeDate = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(Platform.OS === 'ios');
+    setDate(currentDate);
   };
 
   return (
@@ -92,12 +103,20 @@ const RequestClaim = () => {
         </View>
 
         {/* Date of Incident */}
-        <TextInput
-          placeholder="Date of Incident"
-          placeholderTextColor={Colors.LIGHT}
-          style={styles.input}
-          keyboardType="numeric"
-        />
+        <TouchableOpacity style={styles.dateTimeButton} onPress={() => setShowDatePicker(true)}>
+            <Text>Select Incident Date: {date.toLocaleDateString()}</Text>
+          </TouchableOpacity>
+
+          {showDatePicker && (
+            <DateTimePicker
+              testID="datePicker"
+              value={date}
+              mode="date"
+              is24Hour={true}
+              display="default"
+              onChange={onChangeDate}
+            />
+          )}
 
         {/* Amount */}
         <TextInput
@@ -141,6 +160,14 @@ const styles = StyleSheet.create({
     borderWidth: 1.2,
     borderRadius: 4,
     marginBottom: 20,
+  },
+  dateTimeButton: {
+    backgroundColor: '#f0f0f0',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 15,
+    borderColor: Colors.PRIMARY,
+    borderWidth: 1.2,
   },
   picker: {
     fontFamily: "outfit-light",

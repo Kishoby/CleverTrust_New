@@ -119,7 +119,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: "My Profile",
           headerTitleAlign: 'center',
           headerLeft: renderBackButton,
           headerTitleStyle: {

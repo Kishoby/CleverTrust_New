@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Platform,ToastAndroid } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Colors } from "@/constants/Colors";
 import { useNavigation } from "@react-navigation/native";
@@ -23,6 +23,12 @@ const BookAppointment = () => {
   const handleScheduleMeeting = () => {
     console.log('Scheduling meeting with:', { name, phone, insuranceType, currentCoverage, date, time });
     // Implement your scheduling logic here
+  };
+
+  const handleSubmit = () => {
+    // Logic to handle claim submission, e.g., API calls, validation
+    ToastAndroid.show("Appointment Submitted", ToastAndroid.LONG);
+    // You can navigate to another screen or show a success message
   };
 
   const onChangeDate = (event, selectedDate) => {
@@ -117,11 +123,9 @@ const BookAppointment = () => {
             />
           )}
           
-          <Button
-            title="Schedule a Meeting"
-            onPress={handleScheduleMeeting}
-            color={Colors.PRIMARY}
-          />
+          <TouchableOpacity onPress={handleSubmit} style={styles.submitButton}>
+          <Text style={styles.submitButtonText}>Submit Now</Text>
+        </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -193,6 +197,19 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginBottom: 15,
+  },
+  submitButton: {
+    backgroundColor: Colors.PRIMARY,
+    alignItems: "center",
+    paddingVertical: 12,
+    borderRadius: 2,
+    marginTop: 20,
+    
+  },
+  submitButtonText: {
+    color: "#fff",
+    fontFamily: "outfit-bold",
+    fontSize: 16,
   },
 });
 
